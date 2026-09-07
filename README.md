@@ -893,15 +893,6 @@ buzzin/
 ├── public/audio/                     12 synthesised public-domain clips
 └── vercel.json                       pins framework: nextjs — see Operational Notes
 ```
-
-### 🛑 Three places to be careful
-
-| File | Why |
-|---|---|
-| `server/snapshots.ts` | Anything added here **reaches a player's device**. |
-| `lib/engine/*` | Must stay **pure**. No `Date.now()`, no I/O. It is the tested core. |
-| `server/game.ts` → `advanceGame` | Every branch must re-check its precondition **inside** the CAS mutator, or concurrent ticks double-apply. |
-
 ---
 
 ## 🧰 Tech Stack
